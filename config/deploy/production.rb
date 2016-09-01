@@ -21,6 +21,17 @@
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
+set :stage, :production
+set :rails_env, 'production'
+set :branch, 'production'
+
+role :app, %w{192.168.33.10}
+role :web, %w{192.168.33.10}
+role :db, %w{192.168.33.10}
+
+set :ssh_options, {
+  forward_agent: true
+}
 
 
 # Configuration
