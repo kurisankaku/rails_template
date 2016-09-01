@@ -22,7 +22,7 @@
 # role :db,  %w{deploy@example.com}
 
 set :stage, :staging
-set :rails_env, 'development'
+set :rails_env, 'staging'
 set :branch, 'staging'
 
 role :app, %w{192.168.33.10}
