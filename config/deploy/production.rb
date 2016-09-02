@@ -25,9 +25,9 @@ set :stage, :production
 set :rails_env, 'production'
 set :branch, 'production'
 
-role :app, %w{192.168.33.10}
-role :web, %w{192.168.33.10}
-role :db, %w{192.168.33.10}
+role :app, %w{vagrant@192.168.33.10}
+role :web, %w{vagrant@192.168.33.10}
+role :db, %w{vagrant@192.168.33.10}
 
 set :ssh_options, {
   forward_agent: true

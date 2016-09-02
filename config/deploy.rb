@@ -10,7 +10,7 @@ set :repo_url, 'git@github.com:kurisankaku/rails_template.git'
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/my_app_name'
-set :deploy_to, "/var/www/#{application}"
+set :deploy_to, "/var/www/#{fetch(:application)}"
 
 # Default value for :scm is :git
 set :scm, :git
@@ -26,19 +26,10 @@ set :scm, :git
 set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, [
-  'config/database.yml',
-  'config/secrets.yml'
-]
+append :linked_files, 'config/database.yml', 'config/secrets.yml'
 
 # Default value for linked_dirs is []
-append :linked_dirs, [
-  'log',
-  'tmp/pids',
-  'tmp/cache',
-  'tmp/sockets',
-  'public/system'
-]
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -49,7 +40,7 @@ append :linked_dirs, [
 # rbenv settings. see: https://github.com/capistrano/rbenv/
 # config/deploy.rb
 set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.3.1p112'
+set :rbenv_ruby, '2.3.1'
 
 # in case you want to set ruby version from the file:
 # set :rbenv_ruby, File.read('.ruby-version').strip
@@ -94,6 +85,6 @@ namespace :deploy do
     end
   end
 
-  before :started, 'deploy:upload'
+  before 'deploy:check:linked_files', 'deploy:upload'
   after :finishing, 'deploy:cleanup'
 end
