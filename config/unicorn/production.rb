@@ -1,7 +1,7 @@
 # template: http://unicorn.bogomips.org/examples/unicorn.conf.rb
 # see: https://github.com/tablexi/capistrano3-unicorn/blob/master/examples/unicorn.rb
 
-app_path = File.expand_path('../../', __FILE__)
+app_path = File.expand_path('../../../', __FILE__)
 
 # Sample verbose configuration file for Unicorn (not Rack)
 #
@@ -28,7 +28,7 @@ worker_processes 2
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
 #working_directory "/path/to/app/current" # available in 0.94.0+
-working_directory "#{app_path}/current"
+working_directory "#{app_path}"
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
